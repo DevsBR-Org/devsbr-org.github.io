@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-dark.min.css">
+  <style>
+    :root {
+      --bg-primary: #0d1117;
+      --bg-secondary: #161b22;
+      --bg-tertiary: #21262d;
+      --border-color: #30363d;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --accent: #58a6ff;
+      --accent-hover: #79c0ff;
+      --green: #3fb950;
+      --purple: #bc8cff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border-color);
+      padding: 24px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    .sidebar-header {
+      padding: 0 20px 20px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 16px;
+    }
+
+    .sidebar-header h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .sidebar-header h2 a {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .sidebar-header p {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .sidebar-section {
+      padding: 8px 20px;
+    }
+
+    .sidebar-section h3 {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .sidebar-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar-section li {
+      margin-bottom: 2px;
+    }
+
+    .sidebar-section a {
+      display: block;
+      padding: 6px 12px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.15s;
+    }
+
+    .sidebar-section a:hover {
+      color: var(--text-primary);
+      background: var(--bg-tertiary);
+    }
+
+    .sidebar-section a.active {
+      color: var(--accent);
+      background: rgba(88, 166, 255, 0.1);
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 280px;
+      flex: 1;
+      padding: 40px 48px;
+      max-width: 900px;
+    }
+
+    .markdown-body {
+      background: transparent !important;
+      color: var(--text-primary) !important;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .markdown-body h1 {
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 24px;
+      font-size: 28px;
+    }
+
+    .markdown-body h2 {
+      margin-top: 32px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 22px;
+    }
+
+    .markdown-body h3 {
+      margin-top: 24px;
+      font-size: 18px;
+    }
+
+    .markdown-body table {
+      display: table;
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    .markdown-body table th,
+    .markdown-body table td {
+      padding: 10px 16px;
+      border: 1px solid var(--border-color);
+    }
+
+    .markdown-body table th {
+      background: var(--bg-tertiary);
+      font-weight: 600;
+    }
+
+    .markdown-body table tr {
+      background: var(--bg-secondary);
+    }
+
+    .markdown-body table tr:nth-child(2n) {
+      background: var(--bg-primary);
+    }
+
+    .markdown-body code {
+      background: var(--bg-tertiary);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    .markdown-body pre {
+      background: var(--bg-secondary) !important;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .markdown-body a {
+      color: var(--accent);
+    }
+
+    .markdown-body a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+
+    .markdown-body blockquote {
+      border-left: 3px solid var(--accent);
+      color: var(--text-secondary);
+      padding: 8px 16px;
+      background: rgba(88, 166, 255, 0.05);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .markdown-body hr {
+      border-color: var(--border-color);
+    }
+
+    /* Version badge */
+    .version-badge {
+      display: inline-block;
+      background: rgba(88, 166, 255, 0.15);
+      color: var(--accent);
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+
+    /* Back to top */
+    .back-to-top {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .back-to-top a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .back-to-top a:hover {
+      color: var(--accent);
+    }
+
+    /* Mobile */
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 200;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+      }
+      .sidebar.open { transform: translateX(0); }
+      .main-content {
+        margin-left: 0;
+        padding: 60px 20px 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776; Menu</button>
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <h2><a href="{{ site.baseurl }}/">GameCP Docs</a></h2>
+      <p>v1.6.0 — RF Online Control Panel</p>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Primeiros Passos</h3>
+      <ul>
+        <li><a href="{{ site.baseurl }}/" {% if page.url == "/" or page.url == "/index.html" %}class="active"{% endif %}>Inicio</a></li>
+        <li><a href="{{ site.baseurl }}/gamecp-resumo" {% if page.url contains "gamecp-resumo" %}class="active"{% endif %}>Visao Geral</a></li>
+        <li><a href="{{ site.baseurl }}/gamecp-instalacao" {% if page.url contains "gamecp-instalacao" %}class="active"{% endif %}>Instalacao</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Seguranca</h3>
+      <ul>
+        <li><a href="{{ site.baseurl }}/2fa-seguranca" {% if page.url contains "2fa-seguranca" %}class="active"{% endif %}>Autenticacao 2FA</a></li>
+        <li><a href="{{ site.baseurl }}/verificacao-email" {% if page.url contains "verificacao-email" %}class="active"{% endif %}>Verificacao de Email</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Modulos do Jogador</h3>
+      <ul>
+        <li><a href="{{ site.baseurl }}/inventory" {% if page.url contains "inventory" %}class="active"{% endif %}>Inventario</a></li>
+        <li><a href="{{ site.baseurl }}/gamecp-coins" {% if page.url contains "gamecp-coins" %}class="active"{% endif %}>GameCP Coins</a></li>
+        <li><a href="{{ site.baseurl }}/wallet" {% if page.url contains "wallet" %}class="active"{% endif %}>Carteira (Wallet)</a></li>
+        <li><a href="{{ site.baseurl }}/gamecp-shop-checkout" {% if page.url contains "gamecp-shop-checkout" %}class="active"{% endif %}>Loja e Checkout</a></li>
+        <li><a href="{{ site.baseurl }}/leilao" {% if page.url contains "leilao" %}class="active"{% endif %}>Leilao</a></li>
+        <li><a href="{{ site.baseurl }}/venda-personagens" {% if page.url contains "venda-personagens" %}class="active"{% endif %}>Venda de Personagens</a></li>
+        <li><a href="{{ site.baseurl }}/guild" {% if page.url contains "guild" %}class="active"{% endif %}>Guild</a></li>
+        <li><a href="{{ site.baseurl }}/quests" {% if page.url contains "quests" %}class="active"{% endif %}>Quests</a></li>
+        <li><a href="{{ site.baseurl }}/battlepass-gamecp" {% if page.url contains "battlepass" %}class="active"{% endif %}>Battle Pass</a></li>
+        <li><a href="{{ site.baseurl }}/spin-wheel" {% if page.url contains "spin-wheel" %}class="active"{% endif %}>Spin Wheel</a></li>
+        <li><a href="{{ site.baseurl }}/redeem-gamecp" {% if page.url contains "redeem" and page.url contains "gamecp" %}class="active"{% endif %}>Redeem</a></li>
+        <li><a href="{{ site.baseurl }}/newplayer" {% if page.url contains "newplayer" %}class="active"{% endif %}>New Player</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Administracao</h3>
+      <ul>
+        <li><a href="{{ site.baseurl }}/gamecp-admin-panel" {% if page.url contains "gamecp-admin-panel" %}class="active"{% endif %}>Painel Admin</a></li>
+        <li><a href="{{ site.baseurl }}/configuracoes" {% if page.url contains "configuracoes" %}class="active"{% endif %}>Configuracoes</a></li>
+        <li><a href="{{ site.baseurl }}/cash-premium" {% if page.url contains "cash-premium" %}class="active"{% endif %}>Cash e Premium</a></li>
+        <li><a href="{{ site.baseurl }}/rt-race-transfer" {% if page.url contains "rt-race-transfer" %}class="active"{% endif %}>Race Transfer</a></li>
+        <li><a href="{{ site.baseurl }}/autocash" {% if page.url contains "autocash" %}class="active"{% endif %}>AutoCash</a></li>
+        <li><a href="{{ site.baseurl }}/history-logs" {% if page.url contains "history-logs" %}class="active"{% endif %}>Historico de Logs</a></li>
+        <li><a href="{{ site.baseurl }}/sprite-sheet" {% if page.url contains "sprite-sheet" %}class="active"{% endif %}>Sprite Sheet</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <article class="markdown-body">
+      {{ content }}
+    </article>
+    <div class="back-to-top">
+      <a href="#">Voltar ao topo</a>
+    </div>
+  </main>
+
+</body>
+</html>
