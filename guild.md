@@ -26,39 +26,39 @@ Preencha o formulário com:
 
 ### Informações básicas
 
-| Campo | O que preencher |
-| --- | --- |
+| Campo                  | O que preencher                                         |
+| ---------------------- | ------------------------------------------------------- |
 | **Nome da Recompensa** | Nome identificador (ex: "Top 3 Guilds - Arma Especial") |
-| **Descrição** | Descrição da recompensa |
+| **Descrição**          | Descrição da recompensa                                 |
 
 ### Critérios de entrega
 
-| Campo | O que preencher |
-| --- | --- |
-| **Enviar para todos** | Marque para enviar a todas as guilds (ignora posição min/max) |
-| **Posição Mínima / Máxima** | Faixa de posições no ranking (ex: 1 a 3 = top 3 guilds) |
-| **Requisito de Stat** | Selecione um atributo e defina o valor mínimo |
-| **Level Mínimo / Máximo** | Faixa de level dos membros |
+| Campo                       | O que preencher                                                                                        |
+| --------------------------- | ------------------------------------------------------------------------------------------------------ |
+| **Enviar para todos**       | Marque essa opção para que qualquer jogador consiga resgatar a sua recompensa (ignora posição min/max) |
+| **Posição Mínima / Máxima** | Faixa de posições no ranking (ex: 1 a 3 = top 3 guilds)                                                |
+| **Requisito de Stat**       | Selecione um atributo e defina o valor mínimo                                                          |
+| **Level Mínimo / Máximo**   | Faixa de level dos membros                                                                             |
 
 ### Alvo
 
-| Campo | O que preencher |
-| --- | --- |
-| **Alvo de Entrega** | "Líder" (só o líder recebe) ou "Todos os Membros" |
-| **Recompensa única** | Marque para entregar apenas uma vez |
+| Campo                    | O que preencher                                                      |
+| ------------------------ | -------------------------------------------------------------------- |
+| **Alvo de Entrega**      | "Líder" (só o líder resgata) ou "Todos os Membros"                   |
+| **Recompensa única**     | Marque para entregar apenas uma vez                                  |
 | **Apenas novos membros** | Marque e defina quantos dias (apenas se alvo for "Todos os Membros") |
 
 ### Recompensa
 
-| Campo | O que preencher |
-| --- | --- |
-| **Categoria** | Items, Cash, PvpPoint, GamePoint, Gold, Dalant, GoldPoint, ProcessingPoint, HuntingPoint, Premium ou MaxLevel |
-| **Código do Item** | Código do item (apenas para categoria "Items") — com autocomplete |
-| **Talics** | Talics do item |
-| **Quantidade** | Quantidade a entregar |
-| **Valor da Recompensa** | Valor para categorias que não são itens |
-| **Período (dias)** | Duração em dias |
-| **Ativa** | Marque para ativar a recompensa |
+| Campo                   | O que preencher                                                                                               |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **Categoria**           | Items, Cash, PvpPoint, GamePoint, Gold, Dalant, GoldPoint, ProcessingPoint, HuntingPoint, Premium ou MaxLevel |
+| **Código do Item**      | Código do item (apenas para categoria "Items") — com autocomplete                                             |
+| **Talics**              | Talics do item                                                                                                |
+| **Quantidade**          | Quantidade a entregar                                                                                         |
+| **Valor da Recompensa** | Valor para categorias que não são itens                                                                       |
+| **Período (dias)**      | Duração em dias                                                                                               |
+| **Ativa**               | Marque para ativar a recompensa                                                                               |
 
 Clique em **"Salvar"**
 
