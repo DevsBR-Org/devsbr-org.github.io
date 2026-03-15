@@ -1,120 +1,67 @@
 ---
 title: GameCP Coins
-description: Moeda virtual do GameCP para eventos, roleta e loja
+description: Como gerenciar a moeda virtual GameCP Coins no painel admin
 layout: default
-category: modulos
-order: 5
+category: admin
+order: 9
 ---
 
 # GameCP Coins
 
-GameCP Coins é a **moeda virtual interna** do GameCP, utilizada para participar de eventos, comprar itens na loja e girar a roleta.
+GameCP Coins são pontos internos do painel, usados como moeda no **Spin the Wheel** e outros módulos.
 
 ---
 
-## Visão Geral
+## Como Acessar
 
-| Recurso | Descrição |
-|---------|-----------|
-| **Tipo** | Moeda virtual interna do GameCP |
-| **Obtenção** | Eventos, admin, roleta, promoções |
-| **Uso** | Roleta, loja, funcionalidades especiais |
-| **Admin** | Adicionar/remover, histórico, rastreamento |
-| **Diferencial** | Não é Cash nem Wallet — é exclusiva do GameCP |
+1. Faça login no GameCP com sua conta admin
+2. Clique em **Admin** no menu lateral
+3. Clique na aba **GameCP Coins**
 
 ---
 
-## O que são GameCP Coins?
+## Consultar Saldo de um Jogador
 
-GameCP Coins são uma moeda exclusiva do painel GameCP, separada de Cash (moeda do servidor) e Wallet (carteira em dinheiro real). Elas funcionam como uma **moeda de engajamento** para incentivar a participação dos jogadores.
-
-### Diferença entre as Moedas
-
-| Moeda | O que é | Onde é usada | Como obter |
-|-------|---------|-------------|------------|
-| **GameCP Coins** | Moeda virtual do painel | Roleta, loja GameCP | Eventos, admin, roleta |
-| **Cash** | Moeda premium do servidor | Loja do jogo (in-game) | Compra com dinheiro real, admin |
-| **Wallet** | Carteira em dinheiro real | Checkout WooCommerce, saques | Vendas no leilão, depósitos |
-
-> **Resumo**: GameCP Coins são para o painel, Cash é para o servidor, Wallet é dinheiro real.
+1. No campo **"Login do Jogador"**, digite o login da conta
+2. Clique em **"Consultar"**
+3. O sistema exibe o saldo atual de GameCP Coins do jogador
 
 ---
 
-## Como Ganhar GameCP Coins
+## Adicionar ou Remover Coins
 
-### 1. Eventos
+1. No campo **"Login do Jogador"**, digite o login da conta
+2. No campo **"Quantidade"**, informe o valor (ex: 100)
+3. No campo **"Ação"**, selecione:
+   - **Adicionar** — soma ao saldo atual
+   - **Remover** — subtrai do saldo (nunca fica negativo, será zerado se a quantidade for maior que o saldo)
+4. Clique em **"Aplicar"**
 
-Administradores podem criar eventos que premiam jogadores com GameCP Coins como recompensa por participação ou conquistas.
-
-### 2. Concessão pelo Admin
-
-O admin pode adicionar coins diretamente na conta de qualquer jogador pelo painel administrativo.
-
-### 3. Prêmios da Roleta (Spin Wheel)
-
-A roleta pode ser configurada para dar GameCP Coins como prêmio em um ou mais segmentos.
-
-### 4. Promoções e Bônus
-
-Campanhas especiais podem incluir distribuição de coins para todos os jogadores ou para grupos específicos.
+> Todas as operações são registradas nos logs de auditoria.
 
 ---
 
-## Como Gastar GameCP Coins
+## Histórico de Transações
 
-### 1. Roleta (Spin Wheel)
+O histórico mostra todas as movimentações de GameCP Coins.
 
-A roleta pode exigir um custo em GameCP Coins para cada giro, configurável pelo admin.
+### Filtrar o histórico
 
-### 2. Loja GameCP
+1. No campo **"Filtrar por Login"**, digite o login para buscar (opcional)
+2. No campo **"Tipo de Ação"**, selecione o filtro:
+   - **Todos** — todas as transações
+   - **Adicionado (Admin)** — coins adicionados manualmente
+   - **Removido (Admin)** — coins removidos manualmente
+   - **Spin (Custo)** — coins gastos na roleta
+   - **Spin (Prêmio)** — coins ganhos na roleta
+3. Clique em **"Buscar"**
 
-Itens disponíveis na loja do GameCP podem ter preço em GameCP Coins, permitindo que jogadores troquem suas coins por itens, cash ou outros benefícios.
-
-### 3. Funcionalidades Especiais
-
-Dependendo da configuração do servidor, coins podem ser usadas para desbloquear funcionalidades ou serviços dentro do painel.
-
----
-
-## Administração de GameCP Coins
-
-### Acessando
-
-1. Faça login como admin no GameCP
-2. Acesse **Admin > GameCP Coins**
-3. Utilize as ferramentas de gerenciamento
-
-### Adicionar/Remover Coins
-
-1. Busque o jogador pelo nome ou conta
-2. Defina a **quantidade** de coins a adicionar ou remover
-3. (Opcional) Adicione uma **descrição/motivo** para a operação
-4. Confirme a ação
-
-### Histórico de Transações
-
-O admin tem acesso ao histórico completo de transações com **paginação**:
-
-| Coluna | Descrição |
-|--------|-----------|
-| **Data** | Data e hora da transação |
-| **Jogador** | Conta/personagem envolvido |
-| **Ação** | Tipo da operação (adição, remoção, gasto, prêmio) |
-| **Quantidade** | Número de coins movimentadas |
-| **Saldo Antes** | Saldo do jogador antes da transação |
-| **Saldo Depois** | Saldo do jogador após a transação |
-| **Descrição** | Motivo ou origem da transação |
-
-### Rastreamento de Saldo
-
-- **Saldo antes/depois**: Cada transação registra o saldo anterior e posterior, garantindo rastreabilidade completa
-- **Log de ações**: Todas as operações (admin, sistema, jogador) são registradas
-- **Auditoria**: O admin pode verificar o histórico completo de qualquer jogador
+O histórico carrega automaticamente ao abrir a aba e suporta paginação.
 
 ---
 
 ## Próximos Passos
 
-- [Roleta de Prêmios](spin-wheel) — Configuração da roleta que usa GameCP Coins
-- [Loja e Checkout](gamecp-shop-checkout) — Loja onde coins podem ser gastas
-- [Carteira (Wallet)](wallet) — Entenda a diferença entre Wallet e Coins
+- [Cash e Premium](cash-premium) — Gerenciar cash e premium do jogo
+- [Spin Wheel](spin-wheel) — Configurar a roleta de prêmios
+- [Carteira (Wallet)](wallet) — Gerenciar créditos da carteira

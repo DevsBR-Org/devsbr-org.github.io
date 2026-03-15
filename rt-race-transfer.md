@@ -1,160 +1,85 @@
 ---
-title: Race Transfer (RT)
-description: Transferência de raça de personagens
+title: Race Transfer
+description: Como transferir a raça de um personagem pelo painel admin
 layout: default
 category: administracao
-order: 2
+order: 17
 ---
 
-# Race Transfer (RT)
+# Race Transfer (Transferência de Raça)
 
-O RT permite **mudar a raça de um personagem** de forma assistida e segura pelo GameCP.
-
----
-
-## Visão Geral
-
-| Recurso | Descrição |
-| --- | --- |
-| **Função** | Mudar raça (Bellato, Cora, Accretia) |
-| **Conversão** | Itens são convertidos automaticamente |
-| **Tipo de Armadura** | Seleção de Melee, Range ou Force na v1.6.0 |
-| **Preview** | Mostra antes/depois da troca |
-| **Segurança** | Operação registrada em log |
-| **Acesso** | Apenas admins com permissão |
-
-O RT evita edições manuais no banco, reduzindo risco de "quebrar" personagens.
+O Race Transfer permite transferir um personagem de uma raça/classe para outra, convertendo automaticamente todos os itens equipados e do inventário.
 
 ---
 
-## Quem usa o RT?
+## Como Acessar
 
-O módulo de RT é voltado para **staff/admin** (GM, dono do servidor, moderador com permissão).
-
-No GameCP:
-
-- Aparece como uma **aba administrativa** (Race Transfer / RT), apenas para usuários com permissão especial
-- Jogadores comuns **não** acessam diretamente o RT
-
-Usos comuns:
-
-- Serviço pago (ex: "Troca de Raça Premium")
-- Ferramenta interna para correções e migrações
+1. Faça login no GameCP com sua conta admin
+2. Clique em **Admin** no menu lateral
+3. Clique na aba **Race Transfer**
 
 ---
 
-## Quando usar o Race Transfer?
+## Passo a Passo Completo
 
-| Cenário | Descrição |
-| --- | --- |
-| **Mudança de facção** | Jogador quer trocar de raça sem perder o personagem |
-| **Rebalanceamento** | Incentivar migração entre raças no servidor |
-| **Correção** | Personagem criado na raça errada |
-| **Evento especial** | Eventos de "Migração de Raça" |
-
----
-
-## Passo a Passo
-
-### 1. Acessar o RT
-
-1. Entre no **GameCP** com um usuário administrador
-2. Acesse a área **Admin**
-3. Vá até a aba **Race Transfer (RT)**
-4. Se não tiver permissão, o sistema exibirá aviso de acesso restrito
-
-### 2. Selecionar o Personagem
+### Etapa 1 — Buscar o Personagem
 
 1. No campo de busca, digite o **nome** ou **serial** do personagem
-2. Clique em **Buscar**
-3. O sistema exibe:
-   - Nome do personagem
-   - Raça atual
-   - Classe atual
-   - Serial do personagem
-4. Confirme que é o personagem correto e avance
+2. Clique em **"Buscar"** ou pressione Enter
+3. Selecione o personagem nos resultados
 
-### 3. Escolher Nova Raça, Classe e Tipo de Armadura
+### Etapa 2 — Escolher Nova Raça e Classe
 
-1. Selecione a **nova raça** desejada (Bellato, Cora ou Accretia)
-2. Após escolher a raça, o campo de **classe** é liberado
-3. Selecione a **nova classe** compatível com a nova raça
-4. **Novidade v1.6.0**: Selecione o **tipo de armadura** desejado:
-   - **Melee** — armaduras de combate corpo a corpo
-   - **Range** — armaduras de combate à distância
-   - **Force** — armaduras de combate mágico
+Após selecionar o personagem, o sistema exibe as informações atuais (nome, level, raça, classe).
 
-A seleção do tipo de armadura determina como os equipamentos serão convertidos, garantindo que o personagem receba armaduras compatíveis com seu estilo de jogo na nova raça.
+1. No campo **"Nova Raça"**, selecione a raça destino:
+   - Bellato Masculino / Feminino
+   - Cora Masculino / Feminino
+   - Accretia
+2. No campo **"Nova Classe Base"**, selecione a classe desejada (as opções mudam conforme a raça)
+3. No campo **"Tipo de Armadura"**, selecione o tipo (ex: armadura Ranger para classe Force)
+4. Clique em **"Gerar Pré-visualização"**
 
-> A lista de classes é filtrada automaticamente pela raça escolhida, evitando combinações inválidas.
+### Etapa 3 — Revisar e Confirmar
 
-### 4. Prévia de Itens (Antes e Depois)
+O sistema exibe uma comparação lado a lado:
 
-Antes de confirmar, o RT gera uma **prévia** completa:
-
-- Inventário e equipamentos **antes** da transferência
-- Como ficarão os mesmos itens **depois**, de acordo com a nova raça e tipo de armadura selecionado
-
-O sistema:
-
-- Converte armaduras da raça antiga para equivalentes da nova raça, respeitando o tipo selecionado (Melee/Range/Force)
-- Ajusta anéis, amuletos, poções e itens específicos que variam por raça
-- Mantém itens "globais" (que servem para qualquer raça) sem alteração
-- Marca itens sem equivalente perfeito com **aviso** (warning)
-
-### 5. Confirmar a Transferência
-
-1. Informe o **motivo da transferência** (campo obrigatório)
-   - Exemplos: "Serviço pago – RT Premium", "Correção de personagem", "Evento de migração"
-2. Clique em **Confirmar**
-3. O sistema executa:
-   - Atualização da raça e classe do personagem
-   - Conversão dos itens compatíveis com base no tipo de armadura escolhido
-   - Registro da ação em log administrativo
-4. Mensagem de sucesso com resumo:
-   - Raça antiga e nova raça
-   - Tipo de armadura selecionado
-   - Quantidade de itens convertidos
-
-Se ocorrer algum problema, o sistema informa o erro e não aplica mudanças parciais.
-
----
-
-## O que o RT faz com os itens?
-
-| Tipo de Item | Ação |
+| Coluna | O que mostra |
 | --- | --- |
-| **Armaduras** | Convertidas para a nova raça, respeitando o tipo (Melee/Range/Force) selecionado |
-| **Anéis e amuletos** | Convertidos para equivalentes da nova raça |
-| **Poções especiais** | Convertidas conforme padrões de família de itens |
-| **Itens globais** | Mantidos sem alteração |
-| **Sem equivalente** | Marcados com aviso para avaliação manual |
+| **Antes** | Itens equipados e inventário atuais |
+| **Depois** | Itens convertidos para a nova raça |
+
+1. **Revise** todos os itens convertidos
+2. Se necessário, **edite manualmente** um item clicando nele na coluna "Depois"
+3. Para edição em massa, use o botão **"Edição em Massa"**
+4. Preencha o campo **"Motivo da Transferência"** (obrigatório)
+5. Clique em **"Confirmar Transferência"**
 
 ---
 
-## Boas Práticas
+## Edição Manual de Itens
 
-- Sempre **salvar o motivo** da transferência com clareza para auditorias futuras
-- Evitar fazer RT em personagens com inventário lotado ou itens raros sem equivalentes claros
-- Em casos sensíveis, considerar fazer backup manual antes
-- Selecionar o **tipo de armadura** correto de acordo com a build desejada do personagem
+Ao clicar em um item na coluna "Depois":
 
----
-
-## Uso Comercial do RT
-
-Sugestão para monetização:
-
-1. Crie um **serviço premium** de troca de raça na loja
-2. O jogador compra o direito de RT
-3. Abre ticket ou envia dados do personagem
-4. A staff executa o RT pelo GameCP
-5. Combine regras claras: limite de RT, garantias sobre itens, possibilidade de ajuste manual
+1. O modal mostra o item original e sugestões de conversão
+2. No campo **"Novo Código"**, altere o código do item (com autocomplete)
+3. Ajuste a quantidade e talics se necessário
+4. Confirme a edição
 
 ---
 
-## Tutoriais Relacionados
+## Edição em Massa
 
-- [Painel Admin](gamecp-admin-panel)
-- [Histórico de Logs](history-logs)
-- [Visão Geral do GameCP](gamecp-resumo)
+O modal de edição em massa exibe uma tabela com todos os itens:
+
+- **Original** — item antes da conversão
+- **Convertido** — item após a conversão
+- **Quantidade** e **Ações** — para editar cada item individualmente
+
+---
+
+## Próximos Passos
+
+- [Painel Admin](gamecp-admin-panel) — Visão geral do painel admin
+- [Cash e Premium](cash-premium) — Gerenciar cash e premium
+- [Histórico de Logs](history-logs) — Ver logs de ações administrativas

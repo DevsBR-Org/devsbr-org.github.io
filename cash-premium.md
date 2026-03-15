@@ -1,121 +1,73 @@
 ---
-title: Cash e Premium (Admin)
-description: Gerenciamento de cash, premium e pontos dos jogadores
+title: Cash e Premium
+description: Como adicionar ou remover cash, premium, gold point e pvp point pelo admin
 layout: default
 category: admin
-order: 6
+order: 8
 ---
 
-# Cash e Premium (Admin)
+# Cash e Premium
 
-Este módulo permite que administradores **gerenciem diretamente** o cash, premium, GoldPoint e PVPPoint dos jogadores pelo painel do GameCP.
-
----
-
-## Visão Geral
-
-| Recurso | Descrição |
-|---------|-----------|
-| **Cash** | Adicionar ou remover cash de jogadores |
-| **Premium** | Gerenciar dias de assinatura premium |
-| **GoldPoint** | Manipulação direta de GoldPoints |
-| **PVPPoint** | Manipulação direta de PVPPoints |
-| **Busca** | Localizar jogadores por nome ou conta |
-| **Acesso** | Exclusivo para administradores |
-
-> **Nota**: Este é um módulo exclusivamente administrativo. Jogadores não têm acesso a estas funcionalidades.
+Nesta aba o admin pode adicionar ou remover **cash**, **dias de premium**, **Gold Point** e **PVP Point** para jogadores individuais ou para todos de uma vez.
 
 ---
 
-## Acessando
+## Como Acessar
 
-1. Faça login como **admin** no GameCP
-2. Acesse **Admin > Cash & Premium**
-3. Utilize a busca para localizar o jogador
-
----
-
-## Gerenciamento de Cash
-
-### Adicionar Cash
-
-1. Busque o jogador pelo **nome da conta** ou **nome do personagem**
-2. No campo de Cash, insira a **quantidade** desejada
-3. Clique em **"Adicionar"**
-4. O cash é creditado imediatamente na conta do jogador
-
-### Remover Cash
-
-1. Localize o jogador
-2. Insira a quantidade a ser **removida**
-3. Clique em **"Remover"**
-4. O cash é debitado da conta do jogador
+1. Faça login no GameCP com sua conta admin
+2. Clique em **Admin** no menu lateral
+3. Clique na aba **Cash/Premium**
 
 ---
 
-## Gerenciamento de Premium
+## Gerenciar Cash e Premium
 
-O admin pode adicionar ou verificar os dias restantes de premium de um jogador.
+> **Importante:** Esta funcionalidade gerencia o **cash e premium do jogo**, não da carteira GameCP.
 
-| Ação | Descrição |
-|------|-----------|
-| **Verificar dias** | Veja quantos dias de premium o jogador ainda possui |
-| **Adicionar dias** | Acrescente dias de premium à conta |
-| **Remover dias** | Reduza os dias de premium restantes |
+### Adicionar para um jogador específico
 
-### Adicionando Premium
+1. No campo **"Login do Jogador"**, digite o login da conta
+2. Clique em **"Pesquisar"**
+3. O sistema mostra o **cash atual** e o **status do premium**
+4. No campo **Cash**, informe a quantidade a adicionar (use valor negativo para remover)
+5. No campo **Premium**, informe quantos dias de premium deseja adicionar
+6. Clique em **"Adicionar"**
 
-1. Localize o jogador
-2. Defina o **número de dias** de premium
-3. Confirme a adição
-4. Os dias são somados ao período atual do jogador
+### Adicionar para todos os jogadores
 
----
+1. Na seção **"Adicionar Cash/Premium para Todos os Jogadores"**
+2. No campo **"Cash a Adicionar"**, informe a quantidade (negativo para remover)
+3. No campo **"Dias de Premium a Adicionar"**, informe os dias
+4. Clique em **"Aplicar a Todos"**
+5. Confirme a operação no popup
 
-## GoldPoint e PVPPoint
-
-O admin pode manipular diretamente os pontos dos jogadores:
-
-### GoldPoint
-
-| Ação | Descrição |
-|------|-----------|
-| **Adicionar** | Credita GoldPoints na conta |
-| **Remover** | Debita GoldPoints da conta |
-| **Verificar** | Consulta o saldo atual |
-
-### PVPPoint
-
-| Ação | Descrição |
-|------|-----------|
-| **Adicionar** | Credita PVPPoints na conta |
-| **Remover** | Debita PVPPoints da conta |
-| **Verificar** | Consulta o saldo atual |
+> **Atenção:** A operação em massa afeta **todos os jogadores** e **não pode ser desfeita**. Use com cuidado!
 
 ---
 
-## Busca de Jogadores
+## Gerenciar Gold Point e PVP Point
 
-Para realizar qualquer operação, é necessário localizar o jogador:
+### Adicionar para um personagem específico
 
-1. Digite o **nome da conta** ou **nome do personagem** na barra de busca
-2. Selecione o jogador nos resultados
-3. Visualize as informações atuais (cash, premium, pontos)
-4. Realize as operações desejadas
+1. No campo **"Nome do Personagem"**, digite o nome do char
+2. Clique em **"Pesquisar"**
+3. O sistema mostra o **Gold Point atual** e o **PVP Cash atual**
+4. Preencha os campos com os valores desejados (negativo para remover)
+5. Clique em **"Adicionar"**
 
----
+### Adicionar para todos os personagens
 
-## Boas Práticas
+1. Na seção **"Adicionar Gold Point/PVP Cash para Todos os Personagens"**
+2. Preencha os campos com os valores desejados
+3. Clique em **"Aplicar a Todos"**
+4. Confirme a operação no popup
 
-- **Documente o motivo** de alterações manuais de cash/premium
-- **Verifique o saldo atual** antes de remover valores
-- **Use com moderação** — alterações manuais podem impactar a economia do servidor
-- **Confira o jogador correto** antes de confirmar operações
+> **Atenção:** Esta operação afeta **todos os personagens do servidor** e não pode ser desfeita.
 
 ---
 
 ## Próximos Passos
 
-- [GameCP Coins](gamecp-coins) — Moeda virtual do painel (diferente de Cash)
-- [Configurações](configuracoes) — Configurações gerais do GameCP
-- [Histórico e Logs](history-logs) — Registros de ações administrativas
+- [GameCP Coins](gamecp-coins) — Gerenciar a moeda virtual do painel
+- [Carteira (Wallet)](wallet) — Gerenciar créditos da carteira GameCP
+- [Configurações](configuracoes) — Ajustar funcionalidades do sistema

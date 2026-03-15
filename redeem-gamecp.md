@@ -1,159 +1,82 @@
 ---
-title: Sistema Redeem
-description: Pacotes de itens e codigos promocionais
+title: Redeem (Resgates)
+description: Como gerenciar o sistema de resgates antecipados no painel admin
 layout: default
-category: modulos
-order: 8
+category: admin
+order: 15
 ---
 
-# Sistema Redeem
+# Redeem (Resgates Antecipados)
 
-O Redeem permite criar **pacotes de itens** que jogadores resgatam pelo GameCP. Inclui resgate por codigo promocional, compra antecipada de pacotes (early-redeem-buy), variantes por raca e selecao de personagem.
-
----
-
-## Visao Geral
-
-| Recurso                | Descricao                                       |
-| ---------------------- | ----------------------------------------------- |
-| **Pacotes**            | Conjuntos de itens configuraveis                 |
-| **Codigos**            | Codigos promocionais gerados pelo admin          |
-| **Early Redeem Buy**   | Compra antecipada de pacotes pela loja           |
-| **Variantes por Raca** | Pacotes com itens diferentes por raca            |
-| **Selecao de Char**    | Jogador escolhe o personagem para receber        |
-| **Integracao**         | WooCommerce e entrega automatica                 |
+O sistema de resgates permite gerenciar pacotes de pré-venda. Jogadores que compraram antes do servidor abrir podem resgatar seus itens escolhendo a raça.
 
 ---
 
-## Resgate por Codigo (Code Redemption)
+## Como Acessar
 
-### Fluxo do Jogador
-
-1. O jogador recebe um **codigo promocional** (via evento, campanha, suporte).
-2. Acessa o GameCP e vai na aba **Redeem/Resgates**.
-3. Digita o codigo no campo de resgate.
-4. Seleciona o **personagem** que recebera os itens.
-5. Confirma o resgate.
-6. Os itens sao entregues automaticamente.
-
-### Geracao de Codigos (Admin)
-
-O administrador pode gerar codigos promocionais:
-
-1. Acesse **Admin > Redeem** no GameCP.
-2. Na secao de geracao de codigos:
-   - Defina o **pacote** associado ao codigo.
-   - Configure a **quantidade de usos** (unico ou multiplo).
-   - Gere o codigo (aleatorio ou personalizado).
-3. Distribua o codigo por eventos, redes sociais ou suporte.
-
-| Opcao              | Descricao                                       |
-| ------------------ | ----------------------------------------------- |
-| **Codigo unico**   | Cada codigo so pode ser usado uma vez            |
-| **Codigo multiplo**| Mesmo codigo pode ser usado por varios jogadores |
-| **Expiracao**      | Data limite para uso do codigo                   |
+1. Faça login no GameCP com sua conta admin
+2. Clique em **Admin** no menu lateral
+3. Clique na aba **Resgates**
 
 ---
 
-## Compra Antecipada (Early Redeem Buy)
+## Como Funciona
 
-O sistema permite vender pacotes pela loja que ficam disponiveis para resgate posterior.
-
-### Fluxo
-
-1. O jogador compra um pacote na **Loja** (WooCommerce).
-2. Apos aprovacao do pagamento, um **registro de Redeem** e criado automaticamente.
-3. O jogador acessa o GameCP, vai em **Redeem/Resgates**.
-4. Visualiza o pacote pendente e escolhe o **personagem**.
-5. Confirma o resgate e os itens sao entregues.
-
-Isso permite que o jogador compre antes e escolha o personagem depois.
+1. O jogador compra um pacote na pré-venda (antes do servidor abrir)
+2. O sistema armazena o pacote vinculado ao login
+3. Quando o servidor abre, o jogador acessa o GameCP e resgata escolhendo a raça (ACC, BELL ou CORA)
+4. O sistema entrega o produto correspondente à raça escolhida
 
 ---
 
-## Variantes por Raca (Race-Specific)
+## Ativar/Desativar Resgates
 
-Pacotes podem ter **itens diferentes por raca** do personagem:
-
-| Raca       | Itens Exemplo                                    |
-| ---------- | ------------------------------------------------ |
-| **Bellato** | Armadura Bellato, Arma MAU, Escudo Bellato       |
-| **Cora**    | Armadura Cora, Staff Cora, Manto Cora            |
-| **Accretia**| Armadura Accretia, Launcher, Modulo Accretia     |
-
-Quando o jogador seleciona um personagem para resgate, o sistema identifica a raca e entrega os itens correspondentes.
-
-### Configuracao (Admin)
-
-1. Ao criar o pacote, ative a opcao de **variantes por raca**.
-2. Configure os itens para cada raca separadamente.
-3. O sistema entrega automaticamente a variante correta com base no personagem selecionado.
+1. Na seção superior, use o toggle **"Ativar resgates para jogadores"**
+2. Salve
 
 ---
 
-## Visao do Jogador no GameCP
+## Configurar Produtos por Raça
 
-Quando o modulo Redeem esta ativo e o jogador possui pacotes disponiveis:
+Para cada faixa de preço, você precisa configurar qual produto WooCommerce será entregue por raça.
 
-### Tela de Resgates
+### Adicionar nova configuração
 
-- Lista de **pacotes pendentes** para a conta.
-- Informacoes de cada pacote: nome, descricao, status.
-- Botao para **resgatar** e campo de **selecao de personagem**.
+1. Clique em **"Adicionar Novo"**
+2. Preencha:
 
-### Fluxo de Resgate
+| Campo | O que preencher |
+| --- | --- |
+| **Valor** | Preço do pacote (ex: 50.00) |
+| **Moeda** | Selecione: BRL, USD ou EUR |
+| **Produto ACC** | Selecione o produto WooCommerce para raça Accretia |
+| **Produto BELL** | Selecione o produto WooCommerce para raça Bellato |
+| **Produto CORA** | Selecione o produto WooCommerce para raça Cora |
 
-1. Acessar o GameCP e ir em **Redeem/Resgates**.
-2. Escolher o pacote disponivel.
-3. Selecionar o **personagem** que recebera os itens.
-4. Confirmar o resgate.
-5. Pacote marcado como resgatado e itens entregues.
+3. Clique em **"Adicionar"**
 
----
+### Excluir uma configuração
 
-## Visao do Administrador
-
-### Configurando Pacotes
-
-| Campo          | Descricao                                       |
-| -------------- | ----------------------------------------------- |
-| **Nome**       | Nome do pacote exibido ao jogador                |
-| **Descricao**  | Detalhes do conteudo                             |
-| **Itens**      | Lista de itens com quantidades                   |
-| **Raca**       | Se aplicavel, variantes por raca                 |
-| **Regras**     | Expiracao, limite de uso                         |
-
-### Associando Pacotes
-
-O admin pode associar pacotes a jogadores de diversas formas:
-
-- **Compra na loja**: pedido WooCommerce aprovado gera o registro.
-- **Codigo promocional**: jogador digita o codigo para receber.
-- **Registro manual**: admin associa diretamente a uma conta.
-
-### Gerenciamento
-
-- Visualize todos os pacotes criados e seus status.
-- Acompanhe resgates realizados para auditoria.
-- Exclua pacotes quando necessario.
+Clique no botão de **excluir** na tabela de configurações existentes.
 
 ---
 
-## Integracao com Outros Modulos
+## Gerenciar Pacotes dos Jogadores
 
-| Modulo          | Integracao                                      |
-| --------------- | ----------------------------------------------- |
-| **Loja**        | Compra gera registro de Redeem automaticamente   |
-| **Wallet**      | Compra de pacotes com creditos da carteira       |
-| **Battlepass**   | Pacotes como parte de progressoes                |
-| **New Player**   | Kits iniciais via Redeem                         |
+Na seção **"Pacotes Antecipados"**, você pode ver e gerenciar os pacotes individuais:
+
+1. Use o campo de busca para filtrar por **login**
+2. A tabela exibe: Login, Valor, Quantidade, Order ID, Data, Status (usado ou não)
+3. Para excluir pacotes, marque os checkboxes desejados
+4. Selecione **"Excluir selecionados"** no dropdown de ações
+5. Clique em **"Aplicar"**
+
+> Use o checkbox **"Selecionar Todos"** para marcar todos os pacotes da página atual.
 
 ---
 
-## Boas Praticas
+## Próximos Passos
 
-- Use descricoes claras para os pacotes (conteudo, restricoes, validade).
-- Mantenha historico dos resgates para auditoria.
-- Para codigos promocionais, defina expiracao para evitar uso indefinido.
-- Use variantes por raca para garantir que cada jogador receba itens compativeis.
-- Teste o fluxo completo (geracao de codigo, resgate, entrega) antes de distribuir.
+- [New Player](newplayer) — Recompensas para novos jogadores
+- [Loja e Checkout](gamecp-shop-checkout) — Compras integradas com WooCommerce
+- [Quests](quests) — Criar missões com recompensas

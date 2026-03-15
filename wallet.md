@@ -1,187 +1,86 @@
 ---
 title: Carteira (Wallet)
-description: Sistema de carteira digital integrado ao GameCP
+description: Como gerenciar créditos, saques e configurações da carteira GameCP
 layout: default
-category: modulos
-order: 3
+category: admin
+order: 10
 ---
 
-# Carteira (Wallet) do GameCP
+# Carteira (Wallet)
 
-A Wallet e uma **carteira digital de creditos** integrada ao GameCP. Os jogadores visualizam saldo, solicitam saques por diversos metodos e utilizam o saldo como desconto no checkout WooCommerce.
-
----
-
-## Visao Geral
-
-| Recurso              | Descricao                                       |
-| -------------------- | ----------------------------------------------- |
-| **Saldo**            | Creditos em moeda base (USD)                     |
-| **Exibicao**         | Card com saldo formatado no painel do jogador    |
-| **Saques**           | PIX, PayPal, Wise, USDT                         |
-| **Minimo/Taxa**      | Valor minimo e taxa configurados pelo admin      |
-| **Checkout**         | Desconto via saldo no WooCommerce                |
-| **Admin**            | Creditar, debitar, aprovar saques                |
-| **Historico**        | Registro completo de todas as operacoes          |
+A carteira GameCP é um sistema de créditos em **USD** usado para compras na loja do GameCP. **Não é o cash do jogo.**
 
 ---
 
-## Visao do Jogador
+## Como Acessar
 
-### Acessando a Carteira
-
-1. Faca login no GameCP.
-2. Clique em **"Carteira"** no menu.
-
-### Tela da Carteira
-
-A pagina exibe tres secoes principais:
-
-#### 1. Card de Saldo Disponivel
-
-- Saldo atual formatado (ex.: "US$ 15,00").
-- Indica creditos disponiveis para uso ou saque.
-
-#### 2. Informacoes de Saque
-
-| Informacao       | Descricao                                   |
-| ---------------- | ------------------------------------------- |
-| **Minimo**       | Valor minimo para solicitar saque            |
-| **Taxa**         | Porcentagem cobrada sobre o saque            |
-| **Status**       | Se o sistema de saques esta ativo            |
-
-#### 3. Formulario de Saque
-
-| Campo              | Descricao                                   |
-| ------------------ | ------------------------------------------- |
-| **Valor**          | Quantia desejada (mascara de moeda)          |
-| **Metodo**         | Selecao do metodo de pagamento               |
-| **Dados**          | Informacoes para transferencia               |
+1. Faça login no GameCP com sua conta admin
+2. Clique em **Admin** no menu lateral
+3. Clique na aba **Wallet**
 
 ---
 
-## Metodos de Saque
+## Configurações da Wallet
 
-| Metodo      | Descricao                                        |
-| ----------- | ------------------------------------------------ |
-| **PIX**     | Transferencia via chave PIX (Brasil)              |
-| **PayPal**  | Transferencia para conta PayPal                   |
-| **Wise**    | Transferencia internacional via Wise              |
-| **USDT**    | Transferencia em criptomoeda USDT                 |
+### Passo a passo
 
----
-
-## Solicitando um Saque
-
-1. Verifique o saldo disponivel no card principal.
-2. Preencha o **valor do saque** no formulario.
-3. Escolha o **metodo de pagamento** desejado.
-4. Informe os **dados de pagamento** necessarios.
-5. Clique em **"Solicitar Saque"**.
-
-### Validacoes Automaticas
-
-O sistema verifica antes de aceitar:
-
-- Valor **nao menor** que o minimo configurado.
-- Valor **nao maior** que o saldo disponivel.
-- Dados de pagamento preenchidos corretamente.
-- Nonce de seguranca valido.
-
-Se tudo estiver correto, a solicitacao e registrada e o saldo atualizado. Caso contrario, mensagem de erro e exibida.
+1. **Ativar Saques** — Marque o toggle para permitir que jogadores solicitem saques
+2. **Valor Mínimo (USD)** — Defina o valor mínimo para solicitar saque (ex: 10.00)
+3. **Taxa de Saque (%)** — Defina a porcentagem descontada do saque (ex: 5.00%)
+4. Clique em **"Salvar Configurações"**
 
 ---
 
-## Historico de Saques
+## Gerenciar Créditos
 
-Tabela na parte inferior da pagina com:
+Aqui você pode adicionar, remover ou definir o saldo de um jogador.
 
-| Campo         | Descricao                            |
-| ------------- | ------------------------------------ |
-| **Data/Hora** | Quando foi solicitado                |
-| **Valor**     | Quantia solicitada                   |
-| **Metodo**    | PIX, PayPal, Wise ou USDT           |
-| **Status**    | Pendente, Aprovado, Pago, Cancelado  |
-| **Dados**     | Resumo dos dados de pagamento        |
+### Passo a passo
 
----
-
-## Integracao com WooCommerce (Desconto no Checkout)
-
-O saldo da Wallet pode ser usado como desconto no **checkout do WooCommerce**.
-
-### Requisitos
-
-- Jogador logado no GameCP.
-- Modulo Wallet habilitado.
-- Saldo disponivel na carteira.
-
-### Fluxo
-
-1. O jogador monta um pedido na loja (WooCommerce).
-2. No **carrinho** e no **checkout**, aparece o checkbox **"Use GameCP Wallet"**.
-3. Ao marcar:
-   - O sistema exibe o saldo disponivel.
-   - Aplica desconto no subtotal, limitado pelo saldo e pelo valor do carrinho.
-   - O desconto aparece como **"GameCP Wallet Discount"** nos totais.
-4. Ao finalizar o pedido, o valor e **debitado** do saldo no banco.
-5. Uma nota e adicionada ao pedido indicando quanto foi pago via Wallet.
-
-### Conversao de Moeda
-
-- O sistema suporta multi-moeda automaticamente.
-- O saldo em USD e convertido para a moeda ativa da loja.
-- O debito final e recalculado em USD equivalente.
-
-Se o jogador nao tiver saldo, o checkbox nao e exibido.
+1. Selecione o **tipo de operação**:
+   - **Adicionar** — soma ao saldo atual
+   - **Remover** — subtrai do saldo
+   - **Definir** — substitui o saldo pelo valor informado
+2. No campo **"Login da Conta"**, digite o login do jogador
+3. No campo **"Valor (USD)"**, informe o valor
+4. No campo **"Motivo da Operação"**, descreva o motivo (será registrado no histórico)
+5. Clique em **"Executar Operação"**
 
 ---
 
-## Configuracao pelo Admin
+## Solicitações de Saque
 
-### Configuracoes de Saque
+A tabela mostra os últimos 50 pedidos de saque, com status, valor, método de pagamento e dados.
 
-| Opcao              | Descricao                                   |
-| ------------------ | ------------------------------------------- |
-| **Minimo de saque**| Valor minimo para solicitar (ex.: US$ 10)    |
-| **Taxa de saque**  | Porcentagem cobrada (ex.: 5%)                |
-| **Metodos ativos** | PIX, PayPal, Wise, USDT                     |
-| **Status**         | Ativar/desativar sistema de saques           |
+### Aprovar um saque
 
-### Funcoes Administrativas
+1. Localize o saque com status **"Pendente"**
+2. Clique no botão **"Aprovar"**
+3. Confirme a operação
 
-| Acao               | Descricao                                   |
-| ------------------ | ------------------------------------------- |
-| **Consultar**      | Ver saldo de qualquer jogador                |
-| **Creditar**       | Adicionar saldo (eventos, recargas)          |
-| **Debitar**        | Remover saldo com registro em log            |
-| **Aprovar saques** | Gerenciar solicitacoes pendentes             |
-| **Historico**      | Ver todas as operacoes da carteira           |
+### Rejeitar um saque
 
-### Fluxo de Aprovacao de Saques
-
-1. O jogador solicita um saque.
-2. A solicitacao fica com status **"Pendente"**.
-3. O admin acessa a lista de saques pendentes.
-4. Analisa os dados e decide:
-   - **Aprovar**: marca como aprovado e realiza a transferencia.
-   - **Cancelar**: devolve o saldo ao jogador.
-5. O status e atualizado e o jogador pode acompanhar no historico.
+1. Localize o saque com status **"Pendente"**
+2. Clique no botão **"Rejeitar"**
+3. Confirme a operação
+4. O valor será **devolvido automaticamente** ao saldo do jogador
 
 ---
 
-## Economia Unificada
+## Usuários com Saldo
 
-- O saldo funciona tanto no GameCP quanto na Loja WooCommerce.
-- Todas as operacoes (credito, debito, saque, desconto) sao registradas.
-- Auditoria completa de movimentacoes disponivel para o admin.
+Lista todas as contas que possuem crédito na carteira.
+
+### Passo a passo
+
+1. No campo **"Filtrar por login"**, digite um login para buscar (opcional)
+2. Clique em **"Buscar"**
+3. A lista é carregada automaticamente ao abrir a aba
 
 ---
 
-## Boas Praticas
+## Próximos Passos
 
-- Defina **origem dos creditos** claramente (eventos, recargas, recompensas).
-- Ajuste **minimo e taxa** de saque conforme a realidade do servidor.
-- Monitore historico de saques e descontos regularmente.
-- Documente regras para os jogadores: validade, limites, politica de saques.
-- Teste o fluxo completo (credito, saque, desconto no checkout) antes de abrir ao publico.
+- [Cash e Premium](cash-premium) — Gerenciar cash e premium do jogo
+- [GameCP Coins](gamecp-coins) — Gerenciar a moeda virtual do painel
+- [Loja e Checkout](gamecp-shop-checkout) — Compras integradas com WooCommerce

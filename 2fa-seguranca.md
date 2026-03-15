@@ -1,148 +1,83 @@
 ---
-title: Autenticacao 2FA
-description: Autenticacao de dois fatores para administradores
+title: Autenticação 2FA
+description: Como configurar autenticação de dois fatores para administradores
 layout: default
 category: seguranca
-order: 1
+order: 26
 ---
 
-# Autenticacao 2FA
+# Autenticação 2FA
 
-O sistema de **Autenticacao de Dois Fatores (2FA)** adiciona uma camada extra de seguranca para administradores do GameCP. E opcional para admins regulares, mas pode ser configurado como obrigatorio com setup no primeiro login.
-
----
-
-## Visao Geral
-
-| Recurso              | Descricao                                       |
-| -------------------- | ----------------------------------------------- |
-| **Tipo**             | TOTP (Time-based One-Time Password)              |
-| **Apps compativeis** | Google Authenticator, Authy, Microsoft Auth      |
-| **Obrigatoriedade**  | Configuravel (opcional ou obrigatorio)           |
-| **QR Code**          | Gerado automaticamente para cada admin           |
-| **Codigos de backup**| Codigos de emergencia para recuperacao            |
-| **Lista de exclusao**| Admins especificos podem ser excluidos            |
+A autenticação de dois fatores (2FA) adiciona uma camada extra de segurança ao login do admin usando o Google Authenticator.
 
 ---
 
-## Por que Usar 2FA
+## Como Acessar
 
-- **Seguranca extra**: mesmo com senha vazada, a conta fica protegida.
-- **Padrao de mercado**: usado por bancos, redes sociais e servicos criticos.
-- **Auditoria**: garante que e o admin real fazendo login.
-
----
-
-## Configuracao Obrigatoria no Primeiro Login
-
-Quando o 2FA esta configurado como obrigatorio:
-
-1. O admin faz login no GameCP com usuario e senha.
-2. O sistema detecta que o 2FA **nao esta configurado**.
-3. O admin e **redirecionado automaticamente** para a tela de configuracao.
-4. Nao e possivel acessar nenhuma outra area ate concluir o setup.
-
-### Passo a Passo da Configuracao
-
-1. **Abra o app autenticador** no celular (Google Authenticator, Authy ou similar).
-2. **Escaneie o QR Code** exibido na tela do GameCP.
-3. O app registra a conta e comeca a gerar codigos de 6 digitos.
-4. **Digite o codigo atual** (6 digitos) no campo de verificacao.
-5. **Confirme** para ativar o 2FA.
-6. O sistema gera **codigos de backup** -- salve-os em local seguro.
-
-### Geracao do QR Code
-
-- O QR Code e gerado automaticamente e e **unico por admin**.
-- Contem a chave secreta TOTP vinculada a conta.
-- Nao compartilhe o QR Code com outras pessoas.
-- Se precisar reconfigurar, um novo QR Code sera gerado.
-
-### Codigos de Backup
-
-Apos ativar o 2FA, o sistema fornece codigos de backup:
-
-- Cada codigo pode ser usado **uma unica vez**.
-- Servem para login quando o celular nao esta disponivel.
-- **Guarde em local seguro** (gerenciador de senhas, papel trancado).
-- Se todos os codigos forem usados, solicite novos ao sistema.
+1. Faça login no GameCP com sua conta admin
+2. Clique em **Admin** no menu lateral
+3. Clique na aba **2FA Setup**
 
 ---
 
-## Login com 2FA Ativo
+## Ativar o 2FA
 
-1. Faca login com usuario e senha normalmente.
-2. O sistema solicita o **codigo 2FA**.
-3. Abra o app autenticador e digite o codigo atual (6 digitos).
-4. Acesso liberado.
+### Passo 1 — Gerar o Código Secreto
 
-### Codigo Invalido
+1. Clique em **"Gerar Código Secreto"**
+2. O sistema gera um QR Code e um código manual
 
-| Problema                        | Solucao                                   |
-| ------------------------------- | ----------------------------------------- |
-| Codigo nao aceito               | Verifique se o horario do celular esta sincronizado |
-| Codigo expirado                 | Aguarde o proximo (muda a cada 30 segundos) |
-| App com conta errada            | Confirme que esta usando a conta correta   |
+### Passo 2 — Configurar no Celular
 
----
+1. Abra o **Google Authenticator** no celular
+2. Toque em **"+"** para adicionar uma nova conta
+3. **Escaneie o QR Code** exibido na tela, ou digite o código manualmente
+4. O app vai mostrar um código de 6 dígitos que muda a cada 30 segundos
 
-## Administracao do 2FA
+### Passo 3 — Verificar e Ativar
 
-### Desativar 2FA de um Admin
+1. No campo **"Código de Verificação"**, digite o código de 6 dígitos que aparece no app
+2. Clique em **"Verificar e Ativar 2FA"**
+3. Se o código estiver correto, o 2FA é ativado
 
-Em **Admin > Configuracoes > 2FA**:
+### Passo 4 — Salvar o Código de Backup
 
-1. Selecione o administrador.
-2. Clique em **"Desativar 2FA"**.
-3. Confirme a acao.
-
-> Use apenas em emergencias. A conta fica desprotegida ate reconfigurar.
-
-### Lista de Exclusao do 2FA Obrigatorio
-
-Alguns admins podem ser excluidos da obrigatoriedade:
-
-1. Acesse **Admin > Admins**.
-2. Edite o administrador desejado.
-3. Marque **"Excluir do 2FA obrigatorio"**.
-4. Salve.
-
-| Cenario                          | Recomendacao                              |
-| -------------------------------- | ----------------------------------------- |
-| Admin com acesso limitado        | Pode ser excluido com cautela              |
-| Admin com acesso total           | Manter 2FA obrigatorio                     |
-| Conta de servico/bot             | Avaliar caso a caso                        |
-
-> Use a exclusao com cautela. Reduz a seguranca da conta excluida.
+1. Após ativar, o sistema exibe um **código de backup**
+2. **Copie e guarde** este código em local seguro
+3. Ele será necessário se você perder acesso ao Google Authenticator
 
 ---
 
-## Solucao de Problemas
+## Desativar o 2FA
 
-### Perdi o celular
+1. Na página do 2FA, clique em **"Desativar 2FA"**
+2. O 2FA é desligado mas o código secreto é mantido (pode reativar)
 
-1. Use um **codigo de backup** para fazer login.
-2. Acesse as configuracoes de 2FA e reconfigure em um novo dispositivo.
-3. Se nao tiver codigos de backup, peca para outro admin desativar o 2FA.
+### Remover Completamente
 
-### Codigo sempre invalido
-
-1. Verifique se o **horario do celular** esta correto e sincronizado com a internet.
-2. Tente outro app autenticador.
-3. Se persistir, desative e reconfigure o 2FA.
-
-### Nao consigo acessar de jeito nenhum
-
-1. Use codigos de backup.
-2. Peca para outro admin desativar seu 2FA temporariamente.
-3. Reconfigure em um novo dispositivo.
+1. Clique em **"Remover 2FA Completamente"**
+2. Isso apaga o código secreto — será necessário reconfigurar do zero
 
 ---
 
-## Boas Praticas
+## Tentativas Recentes
 
-- **Mantenha o app seguro**: proteja o celular com senha/biometria.
-- **Salve os codigos de backup**: em gerenciador de senhas ou local seguro.
-- **Nao compartilhe o QR Code**: cada admin deve ter o seu proprio.
-- **Sincronize o horario**: mantenha o celular com hora automatica ativada.
-- **Mantenha 2FA obrigatorio** para todos os admins com acesso privilegiado.
+A tabela de tentativas mostra:
+- **Status** — Sucesso ou Falha
+- **IP** — Endereço de origem
+- **Data/Hora** — Quando ocorreu
+
+---
+
+## Dicas
+
+- Mantenha o **horário do celular sincronizado** (o 2FA depende do relógio)
+- Se o código não funcionar, tente esperar o próximo ciclo de 30 segundos
+- Se perder o celular, use o **código de backup** ou peça para outro admin resetar
+
+---
+
+## Próximos Passos
+
+- [Configurações](configuracoes) — Ajustar funcionalidades do sistema
+- [Painel Admin](gamecp-admin-panel) — Visão geral do painel admin
