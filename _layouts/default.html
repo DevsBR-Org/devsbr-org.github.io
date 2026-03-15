@@ -44,26 +44,129 @@
     }
 
     .sidebar-header {
-      padding: 0 20px 20px;
+      padding: 0 20px 16px;
       border-bottom: 1px solid var(--border-color);
-      margin-bottom: 16px;
+      margin-bottom: 8px;
     }
 
-    .sidebar-header h2 {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--text-primary);
+    .sidebar-logo {
+      display: block;
+      margin-bottom: 12px;
     }
 
-    .sidebar-header h2 a {
-      color: var(--text-primary);
-      text-decoration: none;
+    .sidebar-logo img {
+      max-width: 160px;
+      height: auto;
+      opacity: 0.9;
+      transition: opacity 0.2s;
+    }
+
+    .sidebar-logo:hover img {
+      opacity: 1;
     }
 
     .sidebar-header p {
       font-size: 12px;
       color: var(--text-secondary);
-      margin-top: 4px;
+      margin-top: 0;
+    }
+
+    /* Search */
+    .sidebar-search {
+      padding: 8px 20px 12px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 8px;
+    }
+
+    .sidebar-search .search-wrapper {
+      position: relative;
+    }
+
+    .sidebar-search input {
+      width: 100%;
+      padding: 8px 12px 8px 34px;
+      font-size: 13px;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .sidebar-search input::placeholder {
+      color: var(--text-secondary);
+    }
+
+    .sidebar-search input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.15);
+    }
+
+    .sidebar-search .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-secondary);
+      pointer-events: none;
+      line-height: 0;
+    }
+
+    .sidebar-search .search-clear {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-secondary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 2px 4px;
+      border-radius: 4px;
+      display: none;
+      line-height: 1;
+    }
+
+    .sidebar-search .search-clear:hover {
+      color: var(--text-primary);
+      background: var(--bg-tertiary);
+    }
+
+    .sidebar-search .search-shortcut {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 11px;
+      color: var(--text-secondary);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 1px 6px;
+      pointer-events: none;
+    }
+
+    .sidebar-section.hidden-by-search {
+      display: none;
+    }
+
+    .sidebar-section li.hidden-by-search {
+      display: none;
+    }
+
+    .search-no-results {
+      padding: 16px 20px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 13px;
+      display: none;
+    }
+
+    .search-highlight {
+      background: rgba(88, 166, 255, 0.2);
+      border-radius: 2px;
     }
 
     .sidebar-section {
@@ -269,8 +372,25 @@
 
   <nav class="sidebar">
     <div class="sidebar-header">
-      <h2><a href="{{ site.baseurl }}/">GameCP Docs</a></h2>
-      <p>v1.6.0 — RF Online Control Panel</p>
+      <a href="{{ site.baseurl }}/" class="sidebar-logo">
+        <img src="{{ site.baseurl }}/style/LOGO2.png" alt="DevsBR">
+      </a>
+      <p>v1.6.0 — GameCP Docs</p>
+    </div>
+
+    <div class="sidebar-search">
+      <div class="search-wrapper">
+        <span class="search-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </span>
+        <input type="text" id="sidebarSearch" placeholder="Pesquisar..." autocomplete="off">
+        <span class="search-shortcut" id="searchShortcut">Ctrl+K</span>
+        <button class="search-clear" id="searchClear" title="Limpar">&times;</button>
+      </div>
+    </div>
+
+    <div class="search-no-results" id="searchNoResults">
+      Nenhum resultado encontrado
     </div>
 
     <div class="sidebar-section">
@@ -351,6 +471,125 @@
       <a href="#">Voltar ao topo</a>
     </div>
   </main>
+
+  <script>
+  (function() {
+    var input = document.getElementById('sidebarSearch');
+    var clearBtn = document.getElementById('searchClear');
+    var shortcut = document.getElementById('searchShortcut');
+    var noResults = document.getElementById('searchNoResults');
+    var sections = document.querySelectorAll('.sidebar-section');
+
+    // Ctrl+K shortcut
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        input.focus();
+        input.select();
+      }
+      if (e.key === 'Escape' && document.activeElement === input) {
+        input.value = '';
+        input.blur();
+        filterLinks('');
+      }
+    });
+
+    input.addEventListener('input', function() {
+      filterLinks(this.value);
+    });
+
+    input.addEventListener('focus', function() {
+      if (shortcut) shortcut.style.display = 'none';
+    });
+
+    input.addEventListener('blur', function() {
+      if (!this.value && shortcut) shortcut.style.display = '';
+    });
+
+    clearBtn.addEventListener('click', function() {
+      input.value = '';
+      input.focus();
+      filterLinks('');
+    });
+
+    function filterLinks(query) {
+      var q = query.trim().toLowerCase();
+
+      // Toggle clear button vs shortcut
+      if (q) {
+        clearBtn.style.display = '';
+        if (shortcut) shortcut.style.display = 'none';
+      } else {
+        clearBtn.style.display = 'none';
+        if (shortcut && document.activeElement !== input) shortcut.style.display = '';
+      }
+
+      // No filter: show everything
+      if (!q) {
+        sections.forEach(function(sec) {
+          sec.classList.remove('hidden-by-search');
+          var items = sec.querySelectorAll('li');
+          items.forEach(function(li) {
+            li.classList.remove('hidden-by-search');
+            // Remove highlights
+            var a = li.querySelector('a');
+            if (a) a.innerHTML = a.textContent;
+          });
+        });
+        noResults.style.display = 'none';
+        return;
+      }
+
+      var totalVisible = 0;
+
+      sections.forEach(function(sec) {
+        var sectionTitle = sec.querySelector('h3');
+        var titleText = sectionTitle ? sectionTitle.textContent.toLowerCase() : '';
+        var items = sec.querySelectorAll('li');
+        var visibleInSection = 0;
+
+        // Check if section title matches
+        var sectionMatch = titleText.indexOf(q) !== -1;
+
+        items.forEach(function(li) {
+          var a = li.querySelector('a');
+          if (!a) return;
+          var text = a.textContent;
+          var lower = text.toLowerCase();
+
+          if (sectionMatch || lower.indexOf(q) !== -1) {
+            li.classList.remove('hidden-by-search');
+            visibleInSection++;
+
+            // Highlight matching text in link
+            if (lower.indexOf(q) !== -1) {
+              var idx = lower.indexOf(q);
+              var highlighted = text.substring(0, idx) +
+                '<span class="search-highlight">' + text.substring(idx, idx + q.length) + '</span>' +
+                text.substring(idx + q.length);
+              a.innerHTML = highlighted;
+            } else {
+              a.innerHTML = text;
+            }
+          } else {
+            li.classList.add('hidden-by-search');
+            a.innerHTML = text;
+          }
+        });
+
+        if (visibleInSection > 0) {
+          sec.classList.remove('hidden-by-search');
+        } else {
+          sec.classList.add('hidden-by-search');
+        }
+
+        totalVisible += visibleInSection;
+      });
+
+      noResults.style.display = totalVisible === 0 ? '' : 'none';
+    }
+  })();
+  </script>
 
 </body>
 </html>
