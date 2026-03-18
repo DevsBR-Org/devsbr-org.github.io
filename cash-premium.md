@@ -1,6 +1,6 @@
 ---
 title: Cash e Premium
-description: Como adicionar ou remover cash, premium, gold point e pvp point pelo admin
+description: Como adicionar ou remover cash, premium, gold point e pvp cash pelo admin
 layout: default
 category: admin
 order: 8
@@ -8,7 +8,7 @@ order: 8
 
 # Cash e Premium
 
-Nesta aba o admin pode adicionar ou remover **cash**, **dias de premium**, **Gold Point** e **PVP Point** para jogadores individuais ou para todos de uma vez.
+Interface unificada para enviar **Cash**, **Premium**, **Gold Point** e **PVP Cash** para jogadores individuais ou para todos de uma vez.
 
 ---
 
@@ -16,53 +16,63 @@ Nesta aba o admin pode adicionar ou remover **cash**, **dias de premium**, **Gol
 
 1. Faça login no GameCP com sua conta admin
 2. Clique em **Admin** no menu lateral
-3. Clique na aba **Cash/Premium**
+3. Clique na aba **Enviar Pontos**
 
 ---
 
-## Gerenciar Cash e Premium
+## Diferença entre Conta e Personagem
 
-> **Importante:** Esta funcionalidade gerencia o **cash e premium do jogo**, não da carteira GameCP.
+> **Cash / Premium** afetam **contas** (login do jogador).
+> **Gold Point / PVP Cash** afetam **personagens** (nome do char).
 
-### Adicionar para um jogador específico
-
-1. No campo **"Login do Jogador"**, digite o login da conta
-2. Clique em **"Pesquisar"**
-3. O sistema mostra o **cash atual** e o **status do premium**
-4. No campo **Cash**, informe a quantidade a adicionar (use valor negativo para remover)
-5. No campo **Premium**, informe quantos dias de premium deseja adicionar
-6. Clique em **"Adicionar"**
-
-### Adicionar para todos os jogadores
-
-1. Na seção **"Adicionar Cash/Premium para Todos os Jogadores"**
-2. No campo **"Cash a Adicionar"**, informe a quantidade (negativo para remover)
-3. No campo **"Dias de Premium a Adicionar"**, informe os dias
-4. Clique em **"Aplicar a Todos"**
-5. Confirme a operação no popup
-
-> **Atenção:** A operação em massa afeta **todos os jogadores** e **não pode ser desfeita**. Use com cuidado!
+Quando você seleciona itens de ambos os tipos, o sistema mostra **dois campos de busca** lado a lado: um para conta e outro para personagem.
 
 ---
 
-## Gerenciar Gold Point e PVP Point
+## Selecionar o que Enviar
 
-### Adicionar para um personagem específico
+A interface apresenta **4 cards selecionáveis**:
 
-1. No campo **"Nome do Personagem"**, digite o nome do char
-2. Clique em **"Pesquisar"**
-3. O sistema mostra o **Gold Point atual** e o **PVP Cash atual**
-4. Preencha os campos com os valores desejados (negativo para remover)
-5. Clique em **"Adicionar"**
+| Card | Cor | Afeta | Descrição |
+| --- | --- | --- | --- |
+| **Cash** | Amarelo | Conta | Moeda premium do jogo |
+| **Premium** | Roxo | Conta | Dias de premium |
+| **Gold Point** | Âmbar | Personagem | Pontos de ouro |
+| **PVP Cash** | Vermelho | Personagem | Pontos de PVP |
 
-### Adicionar para todos os personagens
+Clique nos cards para ativar/desativar cada tipo. É necessário selecionar **pelo menos um** para continuar.
 
-1. Na seção **"Adicionar Gold Point/PVP Cash para Todos os Personagens"**
-2. Preencha os campos com os valores desejados
-3. Clique em **"Aplicar a Todos"**
-4. Confirme a operação no popup
+---
 
-> **Atenção:** Esta operação afeta **todos os personagens do servidor** e não pode ser desfeita.
+## Enviar para um Jogador Específico
+
+1. Selecione os tipos desejados (Cash, Premium, Gold Point e/ou PVP Cash)
+2. **Para Cash/Premium:** no campo **"Conta do Jogador"**, digite o login e clique em **"Buscar"**
+   - O sistema exibe o cash atual e status do premium
+3. **Para Gold Point/PVP Cash:** no campo **"Personagem"**, digite o nome do char e clique em **"Buscar"**
+   - O sistema exibe o Gold Point e PVP Cash atuais
+4. Na seção **"Valores"**, preencha as quantidades:
+   - Use valores **positivos** para adicionar
+   - Use valores **negativos** para remover
+5. Clique em **"Enviar"**
+
+---
+
+## Enviar para Todos
+
+1. Ative o toggle **"Enviar para Todos"** (fica vermelho quando ativo)
+2. Selecione os tipos desejados
+3. Preencha os valores
+4. Clique em **"Enviar para TODOS"**
+5. Confirme no popup de confirmação
+
+> **Atenção:** Esta ação afeta **todos os jogadores/personagens** do servidor e **não pode ser desfeita**. Use com extremo cuidado!
+
+---
+
+## Botão Limpar
+
+Use o botão **"Limpar"** ao lado do botão de enviar para resetar todos os campos e seleções.
 
 ---
 

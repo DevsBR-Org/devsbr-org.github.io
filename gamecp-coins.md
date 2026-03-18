@@ -8,7 +8,7 @@ order: 9
 
 # GameCP Coins
 
-GameCP Coins são pontos internos do painel, usados como moeda no **Spin the Wheel** e outros módulos.
+GameCP Coins são pontos internos do painel, armazenados na tabela `tbl_gamecp_gamepoints`. São usados como moeda no **Spin the Wheel** e outros módulos.
 
 ---
 
@@ -16,47 +16,68 @@ GameCP Coins são pontos internos do painel, usados como moeda no **Spin the Whe
 
 1. Faça login no GameCP com sua conta admin
 2. Clique em **Admin** no menu lateral
-3. Clique na aba **GameCP Coins**
+3. No submenu **Jogadores**, clique em **GameCP Coins**
 
 ---
 
-## Consultar Saldo de um Jogador
+## Gerenciar Coins de um Jogador
 
-1. No campo **"Login do Jogador"**, digite o login da conta
-2. Clique em **"Consultar"**
-3. O sistema exibe o saldo atual de GameCP Coins do jogador
+1. No campo **"Buscar Jogador"**, digite o login da conta
+2. Clique em **"Buscar"**
+3. O sistema exibe um card com o **login** e o **saldo atual** de coins
+4. Selecione a operação:
+
+| Operação | Cor | Descrição |
+| --- | --- | --- |
+| **Adicionar** | Verde | Soma ao saldo atual |
+| **Remover** | Vermelho | Subtrai do saldo (nunca fica negativo, será zerado se a quantidade for maior) |
+
+5. Informe a **quantidade de coins**
+6. Clique em **"Adicionar Coins"** ou **"Remover Coins"**
+7. O saldo no card é atualizado automaticamente após a operação
 
 ---
 
-## Adicionar ou Remover Coins
+## Enviar para Todos
 
-1. No campo **"Login do Jogador"**, digite o login da conta
-2. No campo **"Quantidade"**, informe o valor (ex: 100)
-3. No campo **"Ação"**, selecione:
-   - **Adicionar** — soma ao saldo atual
-   - **Remover** — subtrai do saldo (nunca fica negativo, será zerado se a quantidade for maior que o saldo)
-4. Clique em **"Aplicar"**
+1. Ative o toggle **"Enviar para todos"** (fica destacado em azul)
+2. O campo de busca individual desaparece
+3. Selecione **Adicionar** ou **Remover**
+4. Informe a quantidade
+5. Clique no botão de execução
+6. Confirme no popup de confirmação
 
-> Todas as operações são registradas nos logs de auditoria.
+> **Atenção:** A operação será aplicada em **todas as contas** que possuem registro na tabela de GameCP Coins.
 
 ---
 
 ## Histórico de Transações
 
-O histórico mostra todas as movimentações de GameCP Coins.
+O painel inclui uma seção de **histórico de transações** que carrega automaticamente ao abrir a aba.
 
 ### Filtrar o histórico
 
-1. No campo **"Filtrar por Login"**, digite o login para buscar (opcional)
-2. No campo **"Tipo de Ação"**, selecione o filtro:
-   - **Todos** — todas as transações
-   - **Adicionado (Admin)** — coins adicionados manualmente
-   - **Removido (Admin)** — coins removidos manualmente
-   - **Spin (Custo)** — coins gastos na roleta
-   - **Spin (Prêmio)** — coins ganhos na roleta
-3. Clique em **"Buscar"**
+| Filtro | Descrição |
+| --- | --- |
+| **Login** | Filtra por login do jogador (com autocomplete) |
+| **Tipo de Ação** | Todos, Adicionado (Admin), Removido (Admin), Spin (Custo), Spin (Prêmio) |
 
-O histórico carrega automaticamente ao abrir a aba e suporta paginação.
+1. Preencha os filtros desejados
+2. Clique em **"Buscar"**
+
+### Informações do histórico
+
+| Coluna | Descrição |
+| --- | --- |
+| **Conta** | Login do jogador |
+| **Ação** | Tipo da operação realizada |
+| **Quantidade** | Valor da transação |
+| **Saldo Antes** | Saldo antes da operação |
+| **Saldo Depois** | Saldo após a operação |
+| **Admin** | Quem executou (se aplicável) |
+| **Data** | Data e hora da transação |
+
+O histórico suporta **paginação** com opção de alterar o número de registros por página.
 
 ---
 

@@ -80,8 +80,9 @@ O Admin do GameCP é separado do WordPress. Ele oferece controle total sobre:
 | `manage_guild` | Gerenciar recompensas de guilda |
 | `manage_redeem` | Gerenciar pacotes de resgate |
 | `manage_spinwheel` | Configurar roleta de prêmios |
+| `manage_council` | Gerenciar conselho/patriarca de raças |
 | `view_logs` | Visualizar logs de auditoria |
-| `manage_woocommerce` | Gerenciar produtos da loja |
+| `manage_woocommerce` | Gerenciar produtos, pedidos, cupons e categorias da loja |
 
 ---
 
@@ -140,10 +141,13 @@ O Admin do GameCP é separado do WordPress. Ele oferece controle total sobre:
 
 | Aba | Descrição |
 | --- | --- |
-| **Orders** | Visualização e gerenciamento de pedidos |
 | **Products** | CRUD de produtos com campos específicos do GameCP |
+| **Novo Produto** | Criação simplificada de produto variável para Redeem |
+| **Orders** | Visualização e gerenciamento de pedidos |
 | **Coupons** | Criação e gerenciamento de cupons de desconto |
 | **Categories** | Organização de categorias da loja |
+| **Brands** | Gerenciamento de marcas de produtos |
+| **Attributes** | Gerenciamento de atributos e termos de produtos |
 
 ---
 
@@ -240,8 +244,12 @@ Administradores são **obrigados** a configurar 2FA:
 - [Visão Geral do GameCP](gamecp-resumo)
 - [Instalação e Ativação](gamecp-instalacao)
 - [Race Transfer](rt-race-transfer)
+- [Conselho (Patriarch)](admin-council)
 - [Histórico de Logs](history-logs)
 - [Sprite Sheet](sprite-sheet)
 - [Quests](quests)
 - [Battlepass](battlepass-gamecp)
 - [AutoCash](autocash)
+- [Loja: Produtos](admin-woo-produtos)
+- [Loja: Pedidos](admin-woo-pedidos)
+- [Loja: Cupons](admin-woo-cupons)

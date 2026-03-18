@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//d/xampp/htdocs/site/wp-content/plugins/devsbr/gamecp/pages/admin/tabs/**)",
+      "Read(//d/xampp/htdocs/site/wp-content/plugins/devsbr/gamecp/pages/admin/tabs/woo_admin/**)",
+      "Read(//d/xampp/htdocs/site/wp-content/plugins/devsbr/gamecp/includes/ajax-admin/**)"
+    ]
+  }
+}
