@@ -8,7 +8,7 @@ order: 0
 
 # Documentação GameCP
 
-Bem-vindo à documentação completa do **GameCP v1.6.0** — o painel web para servidores RF Online integrado ao WordPress.
+Bem-vindo à documentação completa do **GameCP v1.7.0** — o painel web para servidores RF Online integrado ao WordPress.
 
 ---
 
@@ -91,7 +91,7 @@ Bem-vindo à documentação completa do **GameCP v1.6.0** — o painel web para 
 
 ### Versão Atual
 
-- **Versão:** 1.6.0
+- **Versão:** 1.7.0
 - **Ultima atualização:** Março 2026
 
 ### Requisitos

@@ -8,7 +8,7 @@ order: 2
 
 # Instalação e Ativação do GameCP
 
-Guia completo para instalar, configurar e ativar o GameCP v1.6.0 no seu servidor RF Online.
+Guia completo para instalar, configurar e ativar o GameCP v1.7.0 no seu servidor RF Online.
 
 ---
 

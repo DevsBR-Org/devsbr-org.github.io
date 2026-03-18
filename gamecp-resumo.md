@@ -6,7 +6,7 @@ category: introducao
 order: 1
 ---
 
-# GameCP v1.6.0 – Visão Geral
+# GameCP v1.7.0 – Visão Geral
 
 O **GameCP** é um painel web completo e moderno para servidores **RF Online**, integrado ao WordPress através do plugin DevsBR. Com mais de **40 páginas para jogadores** e **28+ abas administrativas**, oferece uma experiência profissional para todas as operações do servidor.
 

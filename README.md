@@ -8,7 +8,7 @@ Site: [devsbr-org.github.io](https://devsbr-org.github.io)
 
 ## Sobre
 
-Este repositorio contem a documentacao completa do GameCP v1.6.0, cobrindo todos os modulos do jogador e do painel administrativo. O site e gerado com **Jekyll** e hospedado no **GitHub Pages**.
+Este repositorio contem a documentacao completa do GameCP v1.7.0, cobrindo todos os modulos do jogador e do painel administrativo. O site e gerado com **Jekyll** e hospedado no **GitHub Pages**.
 
 ---
 

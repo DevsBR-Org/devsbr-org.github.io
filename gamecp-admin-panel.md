@@ -8,7 +8,7 @@ order: 1
 
 # Painel Admin do GameCP
 
-O Painel Admin é o centro de controle do GameCP v1.6.0, com **28+ abas** organizadas por categoria para gerenciamento completo do servidor.
+O Painel Admin é o centro de controle do GameCP v1.7.0, com **28+ abas** organizadas por categoria para gerenciamento completo do servidor.
 
 ---
 
